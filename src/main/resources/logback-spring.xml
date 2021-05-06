@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" debug="true">
+    <property name="PORT" value="${server.port:-local}" />
+    <property name="API_PATTERN" value="%d{ISO8601} [${PORT}][blog-email: TraceId : %X{X-B3-TraceId:-}, SpanId : %X{X-B3-SpanId:-}] [%X{request-id}] .%method:%L - %.-5120msg%n" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path:-./data/logs/}blog-email-%d{yyyy-MM-dd}.${PORT}.log</fileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>utf8</charset>
+            <Pattern>${API_PATTERN}</Pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>utf8</charset>
+            <Pattern>${API_PATTERN}</Pattern>
+        </encoder>
+    </appender>
+
+
+
+    <!--<appender name="CatAppender" class="com.dianping.cat.logback.CatLogbackAppender"></appender>-->
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <logger name="c.n.d.s.r.a" level="WARN"/>
+
+    <root level="INFO">
+	    <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <!--<appender-ref ref="CatAppender" />-->
+    </root>
+
+</configuration>

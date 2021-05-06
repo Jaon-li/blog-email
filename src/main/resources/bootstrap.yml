@@ -1,20 +1,20 @@
 spring:
-  application:
-    name: email-service
   cloud:
     nacos:
+      username: nacos
+      password: 17717561090
+
       discovery:
-        server-addr: http://fcdc.vip:8848 #Nacos服务注册中心地址
+        server-addr: http://8.131.70.177:8848 #Nacos服务注册中心地址
+        namespace: bb23c8f9-fee4-4605-bf82-542b3e37f1f3
       config:
-        server-addr: http://fcdc.vip:8848
+        server-addr: http://8.131.70.177:8848
+        namespace: bb23c8f9-fee4-4605-bf82-542b3e37f1f3
         file-extension: yaml #指定yaml格式的配置
-
-management:
-  endpoint:
-    health:
-      show-details: always
-
-
-nacos:
-  config:
-    server-addr:  http://fcdc.vip:8848
+        enabled: true
+        prefix: email-service
+        refresh-enabled: true
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: http://fcdc.vip:9999
