@@ -1,7 +1,7 @@
 spring:
   cloud:
     nacos:
-      username: nacos-dev
+      username: dev
       password: 17717li
 
       discovery:
