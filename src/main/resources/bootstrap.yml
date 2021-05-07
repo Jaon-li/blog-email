@@ -7,6 +7,7 @@ spring:
       discovery:
         server-addr: http://8.131.70.177:8848 #Nacos服务注册中心地址
         namespace: bb23c8f9-fee4-4605-bf82-542b3e37f1f3
+        ip: 1.116.132.222
       config:
         server-addr: http://8.131.70.177:8848
         namespace: bb23c8f9-fee4-4605-bf82-542b3e37f1f3
