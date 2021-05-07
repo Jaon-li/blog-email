@@ -113,11 +113,11 @@ public class EmailUtils {
                     multipart.addBodyPart(messageBodyPart);
                 }
             } catch (Exception e) {
-                log.error("SEND_EMAIL>>addBodyPart", e);
+//                log.error("SEND_EMAIL>>addBodyPart", e);
             }
             message.setContent(multipart);//将multipart对象放到message中
             message.setSentDate(new Date());
-            Transport.send(message, emailServerDTO.getUserName(), DESUtil.getDecryptString(emailServerDTO.getPassword()));
+            Transport.send(message, emailServerDTO.getUserName(), (emailServerDTO.getPassword()));
             properties.clear();
             log.info(new Gson().toJson(upEntity.getTitle() + upEntity.getEmails()));
             return true;
