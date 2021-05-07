@@ -7,10 +7,12 @@ import com.blog.base.response.BaseResponse;
 import com.blog.blogemail.service.EmailService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Api("邮件相关服务")
-@RestController("/api/email/")
+@RestController
+@RequestMapping("/api/email")
 public class EmailController implements EmailApi {
 
     @Autowired
